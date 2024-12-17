@@ -6,9 +6,7 @@ INCDIR = include
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(SRCS:$(SRCDIR)/%.c=%.o)
-TARGET = ARA_ROBOT
-
-
+TARGET = CWIRE_C
 
 
 all: $(TARGET)
@@ -23,6 +21,3 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(OBJS)
 	rm -f $(TARGET)
-
-run: all
-	./$(TARGET)

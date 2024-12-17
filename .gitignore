@@ -1,0 +1,6 @@
+*.dat
+*.vscode
+*.csv
+*.png
+!data/*.png
+codeC/CWIRE_C
