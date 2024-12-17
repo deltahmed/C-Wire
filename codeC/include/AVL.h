@@ -51,6 +51,6 @@ AVL* RightRotation(AVL* a);
 AVL* doubleLeftRotation(AVL* a);
 AVL* doubleRightRotation(AVL* a);
 AVL* balanceAVL(AVL* a);
-AVL* insertAVL(AVL* a, int e, int *h);
-
+AVL* insertAndSumAVL(AVL* a, Station e, int *h);
+AVL* freeAVL(AVL* a);
 #endif

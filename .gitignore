@@ -4,3 +4,4 @@
 *.png
 !data/*.png
 codeC/CWIRE_C
+test.txt

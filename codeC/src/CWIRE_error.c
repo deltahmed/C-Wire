@@ -56,11 +56,17 @@ void CWIRE_error_function(Error type, const char * file, const char * function, 
     case ALLOCATION_ERROR:
         show_error("Allocation failed, check the ram usage.", ALLOCATION_ERROR);
         break;
-    case INCORRECT_ARGS:
-        show_error("Invalid Arguments. try : ./CWIRE_C <src_file> <dest_file>", INCORRECT_ARGS);
+    case INCORRECT_ARGS_ERROR:
+        show_error("Invalid Arguments. try : ./CWIRE_C <src_file>.csv  <dest_file>.csv ", INCORRECT_ARGS_ERROR);
         break;
-    case INCORRECT_ARGC:
-        show_error("Invalid Number of Arguments. try : ./CWIRE_C <src_file> <dest_file>", INCORRECT_ARGC);
+    case INCORRECT_ARGC_ERROR:
+        show_error("Invalid Number of Arguments. try : ./CWIRE_C <src_file>.csv  <dest_file>.csv ", INCORRECT_ARGC_ERROR);
+        break;
+    case NOT_CSV_ERROR:
+        show_error("An File error occured on of the files is not a .csv file", NOT_CSV_ERROR);
+        break;
+    case CSV_ERROR:
+        show_error("Invalid CSV Format", CSV_ERROR);
         break;
     case VALUE_ERROR:
         show_error_line("A Value error occured.", VALUE_ERROR, file, function, line);

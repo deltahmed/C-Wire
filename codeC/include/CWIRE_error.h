@@ -16,22 +16,24 @@
 
 
 /**
- * @brief This macro calls the CWIRE_error_function with the necessary arguments to show where the ARA error is.
+ * @brief This macro calls the CWIRE_error_function with the necessary arguments to show where the error is.
  *
  * @param type The type of error to log, represented by the Error enum.
  */
 #define CWIRE_error(type) (CWIRE_error_function(type, __FILE__,  __FUNCTION__, __LINE__))
 
 /**
- * @brief Enumeration of all possible ARA error types.
+ * @brief Enumeration of all possible error types.
  */
 typedef enum __error_enum {
     UNDEFINED_ERROR = 1000,
     ALLOCATION_ERROR,
     VALUE_ERROR,
     FILE_ERROR,
-    INCORRECT_ARGS,
-    INCORRECT_ARGC,
+    INCORRECT_ARGS_ERROR,
+    INCORRECT_ARGC_ERROR,
+    NOT_CSV_ERROR,
+    CSV_ERROR,
     
 }Error;
 

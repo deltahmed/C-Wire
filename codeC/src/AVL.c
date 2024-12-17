@@ -165,3 +165,14 @@ AVL* insertAndSumAVL(AVL* a, Station e, int *h)
     }
     return a;
 }
+
+AVL* freeAVL(AVL* a){
+    if (a != NULL)
+    {
+        a->LC = freeAVL(a->LC);
+        a->RC = freeAVL(a->RC);
+        free(a);
+    }
+    return NULL;
+    
+}

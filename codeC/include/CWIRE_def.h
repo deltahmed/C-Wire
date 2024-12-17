@@ -19,6 +19,8 @@
 #include "CWIRE_math.h"
 #include "CWIRE_colors.h"
 
+#define MAX_LEN 200
+
 typedef long int lint;
 
 #endif
