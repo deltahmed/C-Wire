@@ -148,7 +148,10 @@ AVL* insertAndSumAVL(AVL* a, Station e, int *h)
     else
     {   
         a->value.load += e.load;
-        a->value.capacity += e.capacity;
+        if (!a->value.capacity)
+        {
+            a->value.capacity = e.capacity;
+        }
         *h = 0;
         return a;
     }
