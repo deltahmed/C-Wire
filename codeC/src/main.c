@@ -14,11 +14,11 @@
 #include "AVL.h"
 
 int main(int argc, char** argv){
-    if (argc != 3)
+    if (argc != 4)
     {
         CWIRE_error(INCORRECT_ARGC_ERROR);
     }
-    if (argv == NULL || argv[1] == NULL || argv[2] == NULL)
+    if (argv == NULL || argv[1] == NULL || argv[2] == NULL || argv[3] == NULL)
     {
         CWIRE_error(INCORRECT_ARGS_ERROR);
     }
@@ -36,13 +36,12 @@ int main(int argc, char** argv){
     int h, ret_var;
     lint id, load, capacity;
     char buffer[MAX_LEN];
-    char firstline[MAX_LEN];
 
-    if (fgets(firstline, MAX_LEN, src_file) == NULL) {
+    if (fgets(buffer, MAX_LEN, src_file) == NULL) {
         fclose(src_file);
         CWIRE_error(FILE_ERROR);
     }
-    printf("%s\n", firstline);
+    printf("%s\n", argv[3]);
     while (fgets(buffer, MAX_LEN, src_file))
     {   
         buffer[strcspn(buffer, "\n")] = '\0';
