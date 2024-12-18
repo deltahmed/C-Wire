@@ -13,7 +13,9 @@
 #include "CWIRE_def.h"
 #include "CWIRE_error.h"
 #include "CWIRE_debug.h"
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 #include "Station.h"
 
 
@@ -53,4 +55,6 @@ AVL* doubleRightRotation(AVL* a);
 AVL* balanceAVL(AVL* a);
 AVL* insertAndSumAVL(AVL* a, Station e, int *h);
 AVL* freeAVL(AVL* a);
+AVL* readCSV(char* filename, AVL* root);
+			
 #endif
