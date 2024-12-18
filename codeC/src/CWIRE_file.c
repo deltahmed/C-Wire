@@ -52,3 +52,36 @@ AVL* readCSVtoAVL(char* src_path, AVL* pTree){
     fclose(src_file);
     return pTree;
 }
+
+void writeAVL(FILE* dest_file, AVL* pTree){
+    if (dest_file == NULL)
+    {
+        CWIRE_error(FILE_ERROR);
+    }
+    if (pTree != NULL)
+    {
+        writeAVL(dest_file, pTree->LC);
+        fprintf(dest_file, "%ld:%ld:%ld", pTree->value.id, pTree->value.capacity, pTree->value.load);
+        writeAVL(dest_file, pTree->RC);
+    }
+}
+
+
+AVL* AVLtoCSV(char* dest_path, AVL* pTree){
+    if (dest_path == NULL)
+    {
+        CWIRE_error(FILE_ERROR);
+    }
+    
+    FILE* dest_file = fopen(dest_path, "w");
+    if (dest_file == NULL)
+    {
+        fclose(dest_file);
+        CWIRE_error(FILE_ERROR);
+    }
+    
+    writeAVL(dest_file, pTree);
+
+
+    return pTree;
+}
