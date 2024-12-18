@@ -119,5 +119,13 @@ tail -n+2 $1 | awk -F';' '$2 != "-" {print $0} ' | cut -d';' -f4,7,8 | sort -n -
 fi
 
 if [[]]; then
-tail -n+2 $1 | awk -F';' '$4 != "-" {print $0} ' | cut -d';' -f4,7,8 | sort -n -k3 -t';'  > tmp/lvTmp.csv
+tail -n+2 $1 | awk -F';' '$3 != "-" {print $0} ' | cut -d';' -f4,7,8 | sort -n -k3 -t';'  > tmp/lvTmp.csv
+fi
+
+if [[]]; then
+tail -n+2 $1 | awk -F';' '$6 != "-" {print $0} ' | cut -d';' -f4,7,8 | sort -n -k3 -t';'  > tmp/lvTmp.csv
+fi
+
+if [[]]; then
+tail -n+2 $1 | awk -F';' '$7 != "-" {print $0} ' | cut -d';' -f4,7,8 | sort -n -k3 -t';'  > tmp/lvTmp.csv
 fi
