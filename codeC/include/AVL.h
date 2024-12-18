@@ -55,6 +55,5 @@ AVL* doubleRightRotation(AVL* a);
 AVL* balanceAVL(AVL* a);
 AVL* insertAndSumAVL(AVL* a, Station e, int *h);
 AVL* freeAVL(AVL* a);
-AVL* readCSV(char* filename, AVL* root);
 			
 #endif

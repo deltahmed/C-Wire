@@ -39,7 +39,7 @@ int main(int argc, char** argv){
 
 
     //FILE* dest_file = fopen(argv[2], "w");
-    pTree = readCSV(argv[1], pTree);
+    pTree = readCSVtoAVL(argv[1], pTree);
     p(pTree);
     pTree = freeAVL(pTree);
     

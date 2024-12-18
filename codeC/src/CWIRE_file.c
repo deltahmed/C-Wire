@@ -16,7 +16,7 @@
  * @param filename The root of the AVL tree is passed to the function, initialized to NULL if it is empty
  * @return The new root of the complete AVL tree is returned
  */
-AVL* readCSV(char* src_path, AVL* pTree){
+AVL* readCSVtoAVL(char* src_path, AVL* pTree){
     if (src_path == NULL)
     {
         CWIRE_error(FILE_ERROR);

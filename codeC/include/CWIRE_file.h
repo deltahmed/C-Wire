@@ -15,6 +15,6 @@
 #include "CWIRE_def.h"
 #include "AVL.h"
 
-AVL* readCSV(char* src_path, AVL* pTree);
+AVL* readCSVtoAVL(char* src_path, AVL* pTree);
 
 #endif
