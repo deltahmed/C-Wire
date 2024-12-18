@@ -11,4 +11,10 @@
 #ifndef CWIRE_FILE_H
 #define CWIRE_FILE_H
 #define FILE_LOGS "data/logs.txt"
+
+#include "CWIRE_def.h"
+#include "AVL.h"
+
+AVL* readCSV(char* src_path, AVL* pTree);
+
 #endif

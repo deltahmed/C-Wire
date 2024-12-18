@@ -171,6 +171,11 @@ AVL* insertAndSumAVL(AVL* a, Station e, int *h)
     return a;
 }
 
+/**
+ * @brief Free the memory allocated to the AVL
+ * @param a The root of the AVL tree.
+ * @return NULL
+ */
 AVL* freeAVL(AVL* a){
     if (a != NULL)
     {
@@ -180,32 +185,4 @@ AVL* freeAVL(AVL* a){
     }
     return NULL;
     
-}
-/**
- * @brief The file is open in read mode
- * @param filename The root of the AVL tree is passed to the function, initialized to NULL if it is empty
- * @return The new root of the complete AVL tree is returned
- */
-AVL* readCSV(char* filename, AVL* root){
-	FILE* file = fopen(filename, "r");
-	if (file == NULL){
-		CWIRE_error(FILE_ERROR);
-		return root;
-	}
-	char line[256];
-	int heightChanged = 0;
-	
-	while(fgets(line, sizeof(line), file)){
-		Station station;
-		
-		if(sscanf(line,"%d,%ld,%ld", &station.id, &station.capacity, &station.load) == 3){
-		root = insertAndSumAVL(root, station, &heightChanged);
-		}
-		else {
-			CWIRE_ERROR(NOT_CSV_ERROR);
-		}
-	}
-	
-	fclose(file);
-	return root;
 }

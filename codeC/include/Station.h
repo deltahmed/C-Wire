@@ -21,6 +21,7 @@ typedef struct station_struct
     lint load;
 }Station;
 
+Station CreateStation(lint id, lint capacity, lint load);
 
 #endif
 
