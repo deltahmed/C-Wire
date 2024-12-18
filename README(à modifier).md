@@ -144,7 +144,7 @@ Sorted results and anomalies are exported to CSV files.
 
 ## **Credits**
 
-- **Author(s)**: Ahmed Amimi, Abdelwaheb Azmani, Remi Saouli
+- **Authors**: Ahmed Amimi, Abdelwaheb Azmani, Remi Saouli
 - **Year**: 2024
 
 ---
