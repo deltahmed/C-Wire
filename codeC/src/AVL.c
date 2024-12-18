@@ -192,7 +192,7 @@ AVL* readCSV(char* filename, AVL* root){
 		CWIRE_error(FILE_ERROR);
 		return root;
 	}
-	char line[];
+	char line[256];
 	int heightChanged = 0;
 	
 	while(fgets(line, sizeof(line), file)){
