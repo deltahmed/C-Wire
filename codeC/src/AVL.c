@@ -10,7 +10,12 @@
 
 
 #include "AVL.h"
-
+#include "CWIRE_def.h"
+#include "CWIRE_error.h"
+#include "CWIRE_debug.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 /**
  * @brief Creates a new AVL tree node.
  * @param e The value to store in the new node.
@@ -175,4 +180,32 @@ AVL* freeAVL(AVL* a){
     }
     return NULL;
     
+}
+/**
+ * @brief The file is open in read mode
+ * @param filename The root of the AVL tree is passed to the function, initialized to NULL if it is empty
+ * @return The new root of the complete AVL tree is returned
+ */
+AVL* readCSV(char* filename, AVL* root){
+	FILE* file = fopen(filename, "r");
+	if (file == NULL){
+		CWIRE_error(FILE_ERROR);
+		return root;
+	}
+	char line[];
+	int heightChanged = 0;
+	
+	while(fgets(line, sizeof(line), file)){
+		Station station;
+		
+		if(sscanf(line,"%d,%ld,%ld", &station.id, &station.capacity, &station.load) == 3){
+		root = insertAndSumAVL(root, station, &heightChanged);
+		}
+		else {
+			CWIRE_ERROR(NOT_CSV_ERROR);
+		}
+	}
+	
+	fclose(file);
+	return root;
 }
