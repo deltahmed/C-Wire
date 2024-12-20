@@ -16,6 +16,26 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+int validateStationData(Station station){
+    if(station.id <= 0)
+    {
+        CWIRE_error(CSV_ERROR);
+        return 0;
+    }
+    if(station.capacity < 0)
+    {
+        CWIRE_error(CSV_ERROR);
+        return 0;
+    }
+    if(station.load < 0)
+    {
+        CWIRE_error(CSV_ERROR);
+        return 0;
+    }
+    return 1;
+}
+
 /**
  * @brief Creates a new AVL tree node.
  * @param e The value to store in the new node.
@@ -23,6 +43,10 @@
  */
 AVL* CreateAVL(Station e)
 {
+    if(!validateStationData(e))
+    {
+        return NULL;
+    }
     AVL* new = (AVL* )malloc(sizeof(AVL));
     if (new == NULL)
     {
@@ -42,6 +66,8 @@ AVL* CreateAVL(Station e)
  */
 AVL* LeftRotation(AVL* a)
 {
+    if(a == NULL || a->RC == NULL) return a;
+    
     AVL* pivot = a->RC; 
     int balance_a = a->balance, balance_p = pivot->balance;
 
@@ -61,6 +87,11 @@ AVL* LeftRotation(AVL* a)
  */
 AVL* RightRotation(AVL* a)
 {
+    if(a == NULL || a->LC == NULL)
+    {
+        return a;
+    }
+    
     AVL* pivot = a->LC; 
     int balance_a = a->balance, balance_p = pivot->balance;
 
@@ -80,6 +111,11 @@ AVL* RightRotation(AVL* a)
  */
 AVL* doubleLeftRotation(AVL* a)
 {
+    if(a == NULL || a->RC == NULL) 
+    {
+        return a;
+    }
+
     a->RC = RightRotation(a->RC);
     return LeftRotation(a);
 }
@@ -91,6 +127,11 @@ AVL* doubleLeftRotation(AVL* a)
  */
 AVL* doubleRightRotation(AVL* a)
 {
+    if(a == NULL || a->LC == NULL)
+    {
+        return a;
+    } 
+
     a->LC = LeftRotation(a->LC);
     return RightRotation(a);
 }
@@ -102,8 +143,12 @@ AVL* doubleRightRotation(AVL* a)
  */
 AVL* balanceAVL(AVL* a)
 {
+    if(a == NULL)
+    {
+        return a;
+    }
     if (a->balance >= 2)
-    { 
+    {
         if (a->RC->balance >= 0)
         {
             return LeftRotation(a); 
@@ -136,6 +181,10 @@ AVL* balanceAVL(AVL* a)
  */
 AVL* insertAndSumAVL(AVL* a, Station e, int *h)
 {
+    if(!validateStationData(e))
+    {
+        return a;
+    }
     if (a == NULL)
     {          
         *h = 1; 
