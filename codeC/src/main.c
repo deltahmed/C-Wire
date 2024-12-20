@@ -14,17 +14,6 @@
 #include "CWIRE_file.h"
 #include "AVL.h"
 
-
-void p(AVL* a){
-    if (a != NULL)
-    {
-        p(a->LC);
-        printf("%ld ", a->value.id);
-        p(a->RC);
-    }
-    
-}
-
 int main(int argc, char** argv){
     if (argc != 4)
     {
@@ -34,16 +23,16 @@ int main(int argc, char** argv){
     {
         CWIRE_error(INCORRECT_ARGS_ERROR);
     }
+
     AVL* pTree = NULL;
-
-
-
-    //FILE* dest_file = fopen(argv[2], "w");
+    
     pTree = readCSVtoAVL(argv[1], pTree);
-    p(pTree);
+
+    FILE* dest_file = fopen(argv[2], "w");
+
+    AVLtoCSV(dest_file, pTree);
+
     pTree = freeAVL(pTree);
-    
-    
-    
+
     return 0;
 }

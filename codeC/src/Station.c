@@ -19,12 +19,11 @@
  * @param type The type of the Station (HVB, HVA, LV).
  * @return the Station.
  */
-Station CreateStation(lint id, lint capacity, lint load, StationType type)
+Station CreateStation(lint id, lint capacity, lint load)
 { 
     Station new;
     new.id = id;
     new.capacity = capacity;
     new.load = load;
-    new.type = type;
     return new;
 }

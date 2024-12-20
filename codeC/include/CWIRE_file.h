@@ -16,5 +16,6 @@
 #include "AVL.h"
 
 AVL* readCSVtoAVL(char* src_path, AVL* pTree);
+AVL* AVLtoCSV(char* dest_path, AVL* pTree);
 
 #endif
