@@ -14,16 +14,23 @@
 #include "CWIRE_error.h"
 #include "CWIRE_debug.h"
 
+typedef enum
+{
+    HVB;
+    HVA;
+    LV;
+}StationType;
+
 typedef struct station_struct
 {
     lint id;
     lint capacity;
     lint load;
+    StationType type;
 }Station;
 
 Station CreateStation(lint id, lint capacity, lint load);
 
 #endif
-
 
 
