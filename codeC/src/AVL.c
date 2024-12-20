@@ -241,22 +241,3 @@ AVL* freeAVL(AVL* a){
     
 }
 
-/**
- * @brief Sums the consumption (load) of stations of a specific type.
- * @param root The root of the AVL tree.
- * @param type The type of the station to filter.
- * @return The total load of stations of the specific type.
- */
-long sumConsumptionByType(AVL* root, StationType type)
-{
-    if(root == NULL)
-    {
-        return 0;
-    }
-
-    long leftSum = sumConsumptionByType(root->LC, type);
-    long rightSum = sumConsumptionByType(root->RC, type);
-    long currentLoad = (root->value.type == type) ? root->value.load : 0;
-
-    return leftSum + rightSum + currentLoad;
-}
