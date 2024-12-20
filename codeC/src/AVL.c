@@ -17,6 +17,11 @@
 #include<stdlib.h>
 #include<string.h>
 
+/**
+ * @brief Validates the data of a Station structure.
+ * @param station The structure to validate.
+ * @return int Return 1 if the data is valid; otherwise, 0.
+ */
 int validateStationData(Station station){
     if(station.id <= 0)
     {
@@ -234,4 +239,24 @@ AVL* freeAVL(AVL* a){
     }
     return NULL;
     
+}
+
+/**
+ * @brief Sums the consumption (load) of stations of a specific type.
+ * @param root The root of the AVL tree.
+ * @param type The type of the station to filter.
+ * @return The total load of stations of the specific type.
+ */
+long sumConsumptionByType(AVL* root, StationType type)
+{
+    if(root == NULL)
+    {
+        return 0;
+    }
+
+    long leftSum = sumConsumptionByType(root->LC, type);
+    long rightSum = sumConsumptionByType(root->RC, type);
+    long currentLoad = (root->value.type == type) ? root->value.load : 0;
+
+    return leftSum + rightSum + currentLoad;
 }
