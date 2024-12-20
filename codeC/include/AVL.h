@@ -56,5 +56,6 @@ AVL* balanceAVL(AVL* a);
 AVL* insertAndSumAVL(AVL* a, Station e, int *h);
 AVL* freeAVL(AVL* a);
 int validateStationData(Station station);
+long sumConsumptionByType(AVL* root, StationType type);
 			
 #endif
