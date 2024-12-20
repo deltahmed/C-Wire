@@ -14,15 +14,17 @@
 /**
  * @brief Creates a new Station.
  * @param id The Station identifier.
- * @param capacity 
- * @param load 
+ * @param capacity The station capacity.
+ * @param load The current load of the Station.
+ * @param type The type of the Station (HVB, HVA, LV).
  * @return the Station.
  */
-Station CreateStation(lint id, lint capacity, lint load)
-{
+Station CreateStation(lint id, lint capacity, lint load, StationType type)
+{ 
     Station new;
     new.id = id;
     new.capacity = capacity;
     new.load = load;
+    new.type = type;
     return new;
 }
