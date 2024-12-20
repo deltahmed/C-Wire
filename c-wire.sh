@@ -13,7 +13,7 @@ display_help() {
     echo "  - Les dossiers tmp et graphs doivent exister ou être créés."
 }
 
-#
+# test
 if [[ "$1" == "-h" || "$#" -lt 3 ]]; then
     display_help
     exit 0
