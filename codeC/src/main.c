@@ -28,9 +28,7 @@ int main(int argc, char** argv){
     
     pTree = readCSVtoAVL(argv[1], pTree);
 
-    FILE* dest_file = fopen(argv[2], "w");
-
-    AVLtoCSV(dest_file, pTree);
+    AVLtoCSV(argv[2], pTree);
 
     pTree = freeAVL(pTree);
 

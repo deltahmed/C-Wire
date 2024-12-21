@@ -13,6 +13,18 @@ BOLD='\033[1m'
 UNDERLINE='\033[4m'   
 RESET='\033[0m'       
 
+UNDEFINED_ERROR=500
+VALUE_ERROR=501
+FILE_ERROR=502
+INCORRECT_ARGS_ERROR=503
+INCORRECT_ARGC_ERROR=504
+CSV_ERROR=505
+STATION_ERROR=506
+CONSUMER_ERROR=507
+FORBIDEN_ERROR=508
+COMPILATION_ERROR=509
+C_ERROR=510
+
 display_help_logo() {
     echo -e "\n\n"
     echo -e "${YELLOW}██╗  ██╗███████╗██╗     ██████╗ ${RESET}"
@@ -37,16 +49,25 @@ display_help() {
 
     echo -e "${BOLD}Examples:${RESET}"
     echo "  bash c-wire.sh data.csv hva comp"
-    echo -e "  bash c-wire.sh data.csv lv indiv central_01\n"
+    echo -e "  bash c-wire.sh data.csv lv indiv 1\n"
 
     echo "Make sure your CSV file is correctly formatted to avoid errors."
 }
 
-display_error() {
 
+echo_error() {
+    if [ $# -ne 2 ]; then
+        echo -e "${MAGENTA} echo_error Arguments number is incorrect ${RESET} Shell error no : ${RED} ${INCORRECT_ARGS_ERROR} ${RESET}"
+        exit ${INCORRECT_ARGS_ERROR}
+    fi
+    echo -e "\n${MAGENTA}$1${RESET} Shell error no : ${RED}$2${RESET}\n"
+    echo -e "${RED}Try :${RESET}"
+    display_help
+    exit $2
 }
 
-# 
+
+
 for arg in "$@"; do
   if [ "$arg" == "-h" ] ; then
     display_help_logo
@@ -55,28 +76,24 @@ for arg in "$@"; do
   fi
 done
 
-if [ $# -ne 3 ] ; then 
-    display_help
-    exit 0 
+if [ $# -ne 3 ] && [ $# -ne 4 ] ; then 
+    echo_error "Invalid argument number must be 3 or 4" ${INCORRECT_ARGC_ERROR}
+fi
 
 CSV_FILE="$1"
 STATION_TYPE="$2"
 CONSUMER_TYPE="$3"
-ID="${4:-}"
+
 
 if [ ! -f "$CSV_FILE" ]; then
-    echo "Erreur : Le fichier CSV fourni n'existe pas."
-    display_help
-    exit 1
+    echo_error "The source file \"${CSV_FILE}\" does not exist : check file path integrity" ${FILE_ERROR}
 fi
 
-if [ "$STATION_TYPE" != "hvb" && "$STATION_TYPE" != "hva" && "$STATION_TYPE" != "lv" ]; then
-    echo "Erreur : Le type de station doit être 'hvb', 'hva' ou 'lv'."
-    display_help
-    exit 1
+if [ "${STATION_TYPE}" != "hvb" ] && [ "${STATION_TYPE}" != "hva" ] && [ "${STATION_TYPE}" != "lv" ]; then
+    echo_error "The station must be only \"hvb\",\"hva\" or \"lv\"" ${STATION_ERROR}
 fi
 
-if [ "$CONSUMER_TYPE" != "comp" && "$CONSUMER_TYPE" != "indiv" && "$CONSUMER_TYPE" != "all" ]; then
+if [ "${CONSUMER_TYPE}" != "comp" ] && [ "${CONSUMER_TYPE}" != "indiv" ] && [ "${CONSUMER_TYPE}" != "all" ]; then
     echo "Erreur : Le type de consommateur doit être 'comp', 'indiv' ou 'all'."
     display_help
     exit 1
