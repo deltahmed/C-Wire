@@ -31,12 +31,14 @@ set yrange [y_min:y_max]
 if (has_negative && has_positive) {
      plot filename using (column(4) < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red", \
      filename using (column(4) >= 0 ? $4 : 1/0):xtic(1) title "Positive Values" linecolor rgb "green"
-} 
+} else {
+     if (has_negative) {
+          plot filename using ($4 < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red"
+     }
 
-if (has_negative) {
-     plot filename using ($4 < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red"
+     if (has_positive) {
+          plot filename using ($4 >= 0 ? $4 : 1/0):xtic(1) title "Positive Values" linecolor rgb "green"
+     }
+
 }
 
-if (has_positive) {
-     plot filename using ($4 >= 0 ? $4 : 1/0):xtic(1) title "Positive Values" linecolor rgb "green"
-}

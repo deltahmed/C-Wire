@@ -435,8 +435,16 @@ if [ "${STATION_TYPE}" == "lv" ] && [ "${CONSUMER_TYPE}" == "all" ] ; then
     if [ -f "${FINAL_MIN_MAX}" ] ; then
         rm -f "${FINAL_MIN_MAX}"
     fi
-    head -n10 ${TMP_FILE_MIN_MAX} > ${TMP_FILE_MIN_MAX2}
-    tail -n10 ${TMP_FILE_MIN_MAX} >> ${TMP_FILE_MIN_MAX2}
+
+    filelen=$(wc -l < "${TMP_FILE_MIN_MAX}") #Check if the file lenght is > 20
+    if [ ${filelen} -gt 20 ] ; then
+        head -n10 ${TMP_FILE_MIN_MAX} > ${TMP_FILE_MIN_MAX2}
+        tail -n10 ${TMP_FILE_MIN_MAX} >> ${TMP_FILE_MIN_MAX2}
+    else
+        echo -e "${YELLOW}[⚠️] The numbers of line for MinMax is under 20 generating with the maximum lines!${RESET}"
+        cat ${TMP_FILE_MIN_MAX} > ${TMP_FILE_MIN_MAX2}
+    fi
+    
     # add the header of the min-max output file
     echo "${FINAL_TITLE_STATION}:Capacity:Load (${FINAL_TITLE_CONSUMER}):Electrical efficiency" > ${FINAL_MIN_MAX}
     # Sort the final min-max file

@@ -41,7 +41,6 @@
   * [Specificity :](#specificity)
     * [Exemple 1 :](#exemple-1)
     * [Exemple 2 :](#exemple-2)
-    * [Exemple 3 :](#exemple-3)
   * [Contributors](#contributors)
   * [License](#licence)
 
@@ -146,19 +145,6 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
 - Here some exemple of the additionnal calculations 
 
 #### Exemple 1
-  - `bash c-wire.sh c-wire_v00.dat lv all`
-
-<p align="center"> 
-  <a href="https://github.com/deltahmed/C-Wire">
-    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v00.png" alt="deltahmed" /> </a>
-</p>
-
-<p align="center"> 
-  <a href="https://github.com/deltahmed/C-Wire">
-    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v00.png" alt="deltahmed" /> </a>
-</p>
-
-#### Exemple 2
   - `bash c-wire.sh c-wire_v25.dat lv all`
 
 <p align="center"> 
@@ -171,7 +157,7 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v25.png" alt="deltahmed" /> </a>
 </p>
 
-#### Exemple 3
+#### Exemple 2
   - `bash c-wire.sh c-wire_v25.dat lv all 1`
 
 <p align="center"> 
