@@ -22,7 +22,7 @@
 </p>
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
-    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/screen.png" alt="deltahmed" /> </a>
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/screen.gif" alt="deltahmed" /> </a>
 </p>
 
 
