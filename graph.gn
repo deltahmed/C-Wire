@@ -1,12 +1,12 @@
 filename = sprintf("%s", ARG)
 set datafile separator ":"
 
-# Analyse des données pour déterminer les plages
+# Determine the graph has negative/positive numbers or not 
 stats filename using 4 nooutput
 has_negative = (STATS_min < 0)
 has_positive = (STATS_max > 0)
 
-# Gestion de la plage de l'axe y
+# graph y range 
 y_min = (STATS_min == STATS_max ? STATS_min - abs(STATS_min) * 0.1 : STATS_min)
 y_max = (STATS_min == STATS_max ? STATS_max + abs(STATS_max) * 0.1 : STATS_max)
 
@@ -23,10 +23,10 @@ set style fill solid 0.7 border -1
 set boxwidth 0.9
 set key outside top center horizontal
 
-# Appliquer la plage de l'axe y
+# set the graph y range
 set yrange [y_min:y_max]
 
-# Tracé conditionnel sans erreur de syntaxe
+# Conditionnal plot
 
 if (has_negative && has_positive) {
      plot filename using (column(4) < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red", \
