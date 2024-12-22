@@ -200,6 +200,8 @@ fi
 
 if [ ! -d "input" ] ; then
     mkdir "input"
+else 
+    rm -rf "input"/*
 fi
 cp ${CSV_FILE} input/input.csv
 
