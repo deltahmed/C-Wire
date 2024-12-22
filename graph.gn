@@ -7,8 +7,8 @@ has_negative = (STATS_min < 0)
 has_positive = (STATS_max > 0)
 
 # graph y range 
-y_min = (STATS_min == STATS_max ? STATS_min - abs(STATS_min) * 0.1 : STATS_min)
-y_max = (STATS_min == STATS_max ? STATS_max + abs(STATS_max) * 0.1 : STATS_max)
+y_min = (STATS_min == STATS_max ? STATS_min - abs(STATS_min) * 0.1 : STATS_min) - abs(STATS_min) * 0.2
+y_max = (STATS_min == STATS_max ? STATS_max + abs(STATS_max) * 0.1 : STATS_max) + abs(STATS_max) * 0.2
 
 set terminal pngcairo size 1000,600 enhanced font 'Arial,12'
 set output "graphs/lv_all_minmax_graph.png"
