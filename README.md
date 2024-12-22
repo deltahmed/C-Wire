@@ -41,6 +41,7 @@
   * [Specificity :](#specificity)
     * [Exemple 1 :](#exemple-1)
     * [Exemple 2 :](#exemple-2)
+    * [Exemple 3 :](#exemple-3)
   * [Contributors](#contributors)
   * [License](#licence)
 
@@ -140,30 +141,47 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
 ```
 
 ### Specificity
-- With the command `lv all` you have in addition to the classic output the 10 station with the lowest load and the 10 LV station with the most load, you have also a graph of this 20 LV stations
+- With the command `lv all` you have in addition to the classic output the 10 station with the lowest load and the 10 LV station with the most load (You also have the station Electrical efficiency displayed in this file), you have also a graph of this 20 LV stations
+
+- Here some exemple of the additionnal calculations 
 
 #### Exemple 1
-</p>
+  - `bash c-wire.sh c-wire_v00.dat lv all`
+
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v00.png" alt="deltahmed" /> </a>
 </p>
-</p>
+
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v00.png" alt="deltahmed" /> </a>
 </p>
 
 #### Exemple 2
-</p>
+  - `bash c-wire.sh c-wire_v25.dat lv all`
+
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v25.png" alt="deltahmed" /> </a>
 </p>
-</p>
+
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v25.png" alt="deltahmed" /> </a>
+</p>
+
+#### Exemple 3
+  - `bash c-wire.sh c-wire_v25.dat lv all 1`
+
+<p align="center"> 
+  <a href="https://github.com/deltahmed/C-Wire">
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v25_1.png" alt="deltahmed" /> </a>
+</p>
+
+<p align="center"> 
+  <a href="https://github.com/deltahmed/C-Wire">
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v25_1.png" alt="deltahmed" /> </a>
 </p>
 
 
