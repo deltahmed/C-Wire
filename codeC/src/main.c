@@ -25,9 +25,13 @@ int main(int argc, char** argv){
     }
     
     AVL* pTree = NULL;
-    
+
+    // Call the function to read the data from the input CSV file and insert it into the AVL tree.
+    // The first argument is the input file path (argv[1]), and the second argument is the tree (initially NULL).
     pTree = readCSVtoAVL(argv[1], pTree);
 
+    // Call the function to write the AVL tree data to the output CSV file.
+    // The second argument is the output file path (argv[2]), and the tree (pTree) is the data to write.
     AVLtoCSV(argv[2], pTree);
 
     pTree = freeAVL(pTree);

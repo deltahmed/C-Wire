@@ -1,7 +1,7 @@
 /**
  * @file AVL.c
  * @author Ahmed A., Rémi S., Abdelwaheb A.
- * @brief AVL handling functions
+ * @brief Base AVL handling functions
  * @version 1.0
  * 
  * @copyright Copyright (c) 2024
@@ -206,10 +206,11 @@ AVL* insertAndSumAVL(AVL* a, Station e, int *h)
     }
     else
     {   
-        a->value.load += e.load;
-        if (!a->value.capacity)
+        // If the ID is the same, update the current node's load and capacity values.
+        a->value.load += e.load; // Add the load from the new station to the existing load.
+        if (!a->value.capacity)  // If the capacity is not set yet, assign it.
         {
-            a->value.capacity = e.capacity;
+            a->value.capacity = e.capacity; // Set the capacity to the value from the new station.
         }
         *h = 0;
         return a;
@@ -231,13 +232,14 @@ AVL* insertAndSumAVL(AVL* a, Station e, int *h)
  * @return NULL
  */
 AVL* freeAVL(AVL* a){
+    // Check if the current node is not NULL.
     if (a != NULL)
     {
-        a->LC = freeAVL(a->LC);
-        a->RC = freeAVL(a->RC);
-        free(a);
+        a->LC = freeAVL(a->LC); // Recursively free the left subtree.
+        a->RC = freeAVL(a->RC); // Recursively free the right subtree.
+        free(a); // Free the current node's memory.
     }
-    return NULL;
+    return NULL; // Return NULL to indicate that the tree is fully freed.
     
 }
 
