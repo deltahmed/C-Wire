@@ -215,19 +215,19 @@ if [ "${STATION_TYPE}" == "hvb" ] ; then #if STATION_TYPE is hva or hvb we know 
     FINAL_TITLE_CONSUMER="Compagny"
 
 elif [ "${STATION_TYPE}" == "hva" ] ; then
-    FINAL_TITLE_STATION="Station HV-A"
+    FINAL_TITLE_STATION="HV-A Station "
     FINAL_TITLE_CONSUMER="Compagny"
 
 elif [ "$CONSUMER_TYPE" == "comp" ] ; then #it not an hva or hvb so its a lv
-    FINAL_TITLE_STATION="Station LV"
+    FINAL_TITLE_STATION="LV Station"
     FINAL_TITLE_CONSUMER="Compagny"
 
 elif [ "$CONSUMER_TYPE" == "indiv" ] ; then #it not an hva or hvb so its a lv
-    FINAL_TITLE_STATION="Station LV"
+    FINAL_TITLE_STATION="LV Station"
     FINAL_TITLE_CONSUMER="Individuals"
 
 else #it not an hva or hvb its not lv comp or lv indiv so its lv all
-    FINAL_TITLE_STATION="Station LV"
+    FINAL_TITLE_STATION="LV Station"
     FINAL_TITLE_CONSUMER="All"
 
 fi
@@ -410,6 +410,7 @@ if [ $? -ne 0 ] ; then
 fi
 echo -e "${GREEN}[✔ ] Sort success !${RESET}                 "
 
+TIME_END=$(date +%s)
 # If the station type is 'lv' and the consumer type is 'all', perform additional calculations
 if [ "${STATION_TYPE}" == "lv" ] && [ "${CONSUMER_TYPE}" == "all" ] ; then
     TMP_FILE_MIN_MAX="${TMP_DIR}/tmp${STATION_TYPE}_${CONSUMER_TYPE}_minmax.csv"
@@ -438,11 +439,11 @@ if [ "${STATION_TYPE}" == "lv" ] && [ "${CONSUMER_TYPE}" == "all" ] ; then
     # Sort the final min-max file
     sort "$TMP_FILE_MIN_MAX2" -t':' -n -k4 >> ${FINAL_MIN_MAX}
     echo -e "${GREEN}[✔ ] MinMax success !${RESET}  "
-    
+    TIME_END=$(date +%s)
+
+    gnuplot -e "ARG='$FINAL_MIN_MAX'" graph.gnuplot
 fi
 
-
-TIME_END=$(date +%s)
 # Calculate and display the duration of this section of the process
 TIME2=$(( TIME_END - TIME_START ))
 TIME=$(( TIME + TIME_END - TIME_START ))
