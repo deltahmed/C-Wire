@@ -66,7 +66,7 @@
 ### Installation:
 1. Make sure you have installed `gnuplot`:
    ```sh
-   sudo apt-get install gnuplot
+   sudo apt update && sudo apt install gnuplot
    ```
 2. Clone this repository:
    ```sh
