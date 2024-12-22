@@ -8,6 +8,7 @@
  * 
  */
 
+// We recreate the usals AVLs functions from the courses
 
 #include "AVL.h"
 #include "CWIRE_def.h"

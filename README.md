@@ -22,7 +22,7 @@
 </p>
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
-    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/screen.gif" alt="deltahmed" /> </a>
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/demo.gif" alt="deltahmed" /> </a>
 </p>
 
 
@@ -137,11 +137,30 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
 ### Specificity :
 - With the command `lv all` you have in addition to the classic output the 10 station with the lowest load and the 10 LV station with the most load, you have also a graph of this 20 LV stations
 
+#### Exemple 1 :
 </p>
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
-    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph.png" alt="deltahmed" /> </a>
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v00.png" alt="deltahmed" /> </a>
 </p>
+</p>
+<p align="center"> 
+  <a href="https://github.com/deltahmed/C-Wire">
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v00.png" alt="deltahmed" /> </a>
+</p>
+
+#### Exemple 2 :
+</p>
+<p align="center"> 
+  <a href="https://github.com/deltahmed/C-Wire">
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/minmax_v25.png" alt="deltahmed" /> </a>
+</p>
+</p>
+<p align="center"> 
+  <a href="https://github.com/deltahmed/C-Wire">
+    <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v25.png" alt="deltahmed" /> </a>
+</p>
+
 
 
 ## Contributors

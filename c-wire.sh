@@ -200,8 +200,8 @@ fi
 
 if [ ! -d "input" ] ; then
     mkdir "input"
-    cp ${CSV_FILE} input/input.csv
 fi
+cp ${CSV_FILE} input/input.csv
 
 if [ ! -d "tests" ] ; then
     mkdir "tests"
