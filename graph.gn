@@ -1,4 +1,14 @@
 filename = sprintf("%s", ARG)
+set datafile separator ":"
+
+# Analyse des données pour déterminer les plages
+stats filename using 4 nooutput
+has_negative = (STATS_min < 0)
+has_positive = (STATS_max > 0)
+
+# Gestion de la plage de l'axe y
+y_min = (STATS_min == STATS_max ? STATS_min - abs(STATS_min) * 0.1 : STATS_min)
+y_max = (STATS_min == STATS_max ? STATS_max + abs(STATS_max) * 0.1 : STATS_max)
 
 set terminal pngcairo size 1000,600 enhanced font 'Arial,12'
 set output "graphs/lv_all_minmax_graph.png"
@@ -6,18 +16,27 @@ set output "graphs/lv_all_minmax_graph.png"
 set title "Graph (lv all minmax)" font ",14"
 set xlabel "LV Station ID" font ",12"
 set ylabel "Electrical efficiency" font ",12"
-
 set xtics rotate by -45 font ",10"
-
 set style data histogram
 set style histogram cluster gap 1
 set style fill solid 0.7 border -1
 set boxwidth 0.9
-
 set key outside top center horizontal
 
-set datafile separator ":"
+# Appliquer la plage de l'axe y
+set yrange [y_min:y_max]
 
-# Plots with color conditions
-plot filename using (column(4) < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red", \
+# Tracé conditionnel sans erreur de syntaxe
+
+if (has_negative && has_positive) {
+     plot filename using (column(4) < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red", \
      filename using (column(4) >= 0 ? $4 : 1/0):xtic(1) title "Positive Values" linecolor rgb "green"
+} 
+
+if (has_negative) {
+     plot filename using ($4 < 0 ? $4 : 1/0):xtic(1) title "Negative Values" linecolor rgb "red"
+}
+
+if (has_positive) {
+     plot filename using ($4 >= 0 ? $4 : 1/0):xtic(1) title "Positive Values" linecolor rgb "green"
+}
