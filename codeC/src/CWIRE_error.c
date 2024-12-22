@@ -64,7 +64,7 @@ void CWIRE_error_function(Error type, const char * file, const char * function, 
         show_error("Invalid Number of Arguments. try : ./CWIRE_C <src_file>.csv  <dest_file>.csv ", INCORRECT_ARGC_ERROR);
         break;
     case NOT_CSV_ERROR:
-        show_error("An File error occured on of the files is not a .csv file", NOT_CSV_ERROR);
+        show_error("A File error occured on of the files is not a .csv file", NOT_CSV_ERROR);
         break;
     case CSV_ERROR:
         show_error("Invalid CSV Format", CSV_ERROR);
@@ -73,7 +73,7 @@ void CWIRE_error_function(Error type, const char * file, const char * function, 
         show_error_line("A Value error occured.", VALUE_ERROR, file, function, line);
         break;
     case FILE_ERROR:
-        show_error_line("An File error occured.", FILE_ERROR, file, function, line);
+        show_error_line("A File error occured.", FILE_ERROR, file, function, line);
         break;
     default:
         show_error_line("An UNDEFINED_ERROR error occured.", UNDEFINED_ERROR, file, function, line);

@@ -8,6 +8,7 @@ SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(SRCS:$(SRCDIR)/%.c=%.o)
 TARGET = CWIRE_C
 
+.SILENT:
 
 all: $(TARGET)
 

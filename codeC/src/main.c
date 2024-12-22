@@ -15,15 +15,15 @@
 #include "AVL.h"
 
 int main(int argc, char** argv){
-    if (argc != 4)
+    if (argc != 3)
     {
         CWIRE_error(INCORRECT_ARGC_ERROR);
     }
-    if (argv == NULL || argv[1] == NULL || argv[2] == NULL || argv[3] == NULL)
+    if (argv == NULL || argv[1] == NULL || argv[2] == NULL)
     {
         CWIRE_error(INCORRECT_ARGS_ERROR);
     }
-
+    
     AVL* pTree = NULL;
     
     pTree = readCSVtoAVL(argv[1], pTree);

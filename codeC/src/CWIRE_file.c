@@ -33,14 +33,10 @@ AVL* readCSVtoAVL(char* src_path, AVL* pTree){
     lint id, load, capacity;
     char buffer[MAX_LEN];
 
-    if (fgets(buffer, MAX_LEN, src_file) == NULL) {
-        fclose(src_file);
-        CWIRE_error(FILE_ERROR);
-    }
     while (fgets(buffer, MAX_LEN, src_file))
     {   
         buffer[strcspn(buffer, "\n")] = '\0';
-        ret_var = sscanf(buffer, "%ld;%ld;%ld", &id, &load, &capacity);
+        ret_var = sscanf(buffer, "%ld;%ld;%ld", &id, &capacity, &load);
         if (ret_var == 3)
         {   
             pTree = insertAndSumAVL(pTree, CreateStation(id, capacity, load), &h);
@@ -61,11 +57,10 @@ void writeAVL(FILE* dest_file, AVL* pTree){
     if (pTree != NULL)
     {
         writeAVL(dest_file, pTree->LC);
-        fprintf(dest_file, "%ld:%ld:%ld", pTree->value.id, pTree->value.capacity, pTree->value.load);
+        fprintf(dest_file, "\n%ld:%ld:%ld", pTree->value.id, pTree->value.capacity, pTree->value.load);
         writeAVL(dest_file, pTree->RC);
     }
 }
-
 
 AVL* AVLtoCSV(char* dest_path, AVL* pTree){
     if (dest_path == NULL)
