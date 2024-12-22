@@ -32,12 +32,17 @@
   * [Built With](#built-with)
 * [Prerequisites](#prerequisites)
 * [Environment](#environment)
-* [Installation](#installation)
-* [Launching the Game](#launching-the-game)
-* [How to Play](#how-to-play)
-* [Contributors](#contributors)
-* [License](#license)
-
+* [Installation and Usage](#installation-and-usage)
+  * [Installation](#installation)
+  * [Parameters](#parameters)
+  * [Rules](#rules)
+  * [Examples](#examples)
+  * [CSV format Exemple :](#csv-format-exemple)
+  * [Specificity :](#specificity)
+    * [Exemple 1 :](#exemple-1)
+    * [Exemple 2 :](#exemple-2)
+  * [Contributors](#contributors)
+  * [License](#licence)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -63,7 +68,7 @@
 - This project was created in unix/linux environment.
 
 ## Installation and Usage
-### Installation:
+### Installation
 1. Make sure you have installed `gnuplot`:
    ```sh
    sudo apt update && sudo apt install gnuplot
@@ -81,11 +86,11 @@
    bash c-wire.sh -h
    ```
 
-### Usage:
+### Usage
   ```sh
   bash c-wire.sh <path_to_csv> <station_type: hva hvb lv> <consumer_type: comp indiv all> [<plant_identifier>] [-h] [-r]
   ```
-### Parameters:
+### Parameters
   - `<path_to_csv>`: Path to the CSV file containing the data. (mandatory)
 
   - `<station_type>`: Type of station to process (hvb, hva, lv). (mandatory)
@@ -98,16 +103,16 @@
 
   - `-r`: force C compilation can only be the last parameter
 
-### Rules:
+### Rules
   - Forbidden combinations: `hvb all`, `hvb indiv`, `hva all`, `hva indiv`.
-### Examples:
+### Examples
   ```sh
   bash c-wire.sh data.csv hva comp
   bash c-wire.sh data.csv lv indiv 1
   ```
 **Make sure your CSV file is correctly formatted to avoid errors.**
 
-### CSV format Exemple :
+### CSV format Exemple
 
 ```sh
 Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Load
@@ -134,10 +139,10 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
 1;-;-;3;-;30;-;24395748
 ```
 
-### Specificity :
+### Specificity
 - With the command `lv all` you have in addition to the classic output the 10 station with the lowest load and the 10 LV station with the most load, you have also a graph of this 20 LV stations
 
-#### Exemple 1 :
+#### Exemple 1
 </p>
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
@@ -149,7 +154,7 @@ Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Loa
     <img src="https://raw.githubusercontent.com/deltahmed/C-Wire/main/data/graph_v00.png" alt="deltahmed" /> </a>
 </p>
 
-#### Exemple 2 :
+#### Exemple 2
 </p>
 <p align="center"> 
   <a href="https://github.com/deltahmed/C-Wire">
