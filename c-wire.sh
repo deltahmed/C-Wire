@@ -440,8 +440,8 @@ if [ "${STATION_TYPE}" == "lv" ] && [ "${CONSUMER_TYPE}" == "all" ] ; then
     sort "$TMP_FILE_MIN_MAX2" -t':' -n -k4 >> ${FINAL_MIN_MAX}
     echo -e "${GREEN}[✔ ] MinMax success !${RESET}  "
     TIME_END=$(date +%s)
-
-    gnuplot -e "ARG='$FINAL_MIN_MAX'" graph.gnuplot
+    tail -n+2 "${FINAL_MIN_MAX}" > "tmp/tmpgraph.csv"
+    gnuplot -e "ARG='tmp/tmpgraph.csv'" graph.gn
 fi
 
 # Calculate and display the duration of this section of the process
@@ -456,4 +456,5 @@ echo -e "Output file : ${GREEN}$OUTPUT_FILE${RESET}"
 
 if [ "${STATION_TYPE}" == "lv" ] && [ "${CONSUMER_TYPE}" == "all" ] ; then
     echo -e "Second Output file : ${GREEN}$FINAL_MIN_MAX${RESET}"
+    echo -e "Third Output file : ${GREEN}graphs/lv_all_minmax_graph.png${RESET}"
 fi
