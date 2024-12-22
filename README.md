@@ -37,7 +37,7 @@
   * [Parameters](#parameters)
   * [Rules](#rules)
   * [Examples](#examples)
-  * [CSV format Exemple :](#csv-format-exemple)
+  * [CSV format](#csv-format)
   * [Specificity :](#specificity)
     * [Exemple 1 :](#exemple-1)
     * [Exemple 2 :](#exemple-2)
@@ -112,31 +112,10 @@
   ```
 **Make sure your CSV file is correctly formatted to avoid errors.**
 
-### CSV format Exemple
+### CSV format
 
 ```sh
 Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Load
-1;-;-;-;-;-;2707288990;-
-1;1;-;-;-;-;916264250;-
-1;1;-;-;71;-;-;213302747
-1;1;1;-;-;-;916264250;-
-1;-;1;-;61;-;-;226765650
-1;-;1;1;-;-;241999040;-
-1;-;-;1;1;-;-;96811846
-1;-;-;1;-;21;-;28198359
-1;-;-;1;-;22;-;26074220
-1;-;-;1;-;23;-;20274618
-1;-;1;2;-;-;382635838;-
-1;-;-;2;2;-;-;87678035
-1;-;-;2;-;24;-;25315611
-1;-;-;2;-;25;-;27415657
-1;-;-;2;-;26;-;21164380
-1;-;1;3;-;-;291629372;-
-1;-;-;3;3;-;-;87081349
-1;-;-;3;-;27;-;27439742
-1;-;-;3;-;28;-;21372652
-1;-;-;3;-;29;-;22139671
-1;-;-;3;-;30;-;24395748
 ```
 
 ### Specificity
